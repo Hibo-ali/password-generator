@@ -155,6 +155,16 @@ function generatePassword() {
 
   //  #3 Generate password based on criteria
 
+  confirmLowerCase = confirm(
+    "Would you like to have lowercase letters as part of your password?"
+  );
+  if(confirmLowerCase) {
+    allChosenPasswords = allChosenPasswords.concat(lowerCase);
+    var random = getRandomInt(lowerCase.length);
+    finalPassword.push(lowerCase[rand]);
+    validatorCounter++;
+  }
+
 
   //  #4 Display password to the page
     return "Generated password will go here!"
