@@ -22,7 +22,9 @@ function generatePassword() {
 
 
     //  password length 8 <128
-
+    passwordLength = prompt(
+      "How many characters would you like your password to be? \nMinimum: 8 Digits \nMaximum: 128 Digits"
+    );
 
     //  lowercase, uppercase, special characters
 
