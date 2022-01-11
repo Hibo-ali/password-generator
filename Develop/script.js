@@ -16,6 +16,9 @@ function writePassword() {
 
 // define generate password by creating a function 
 function generatePassword() {
+  var validatorCount = 0;
+  var allChosenPasswords = [];
+  var finalPassword = [];
   console.log("Button is working")
 
   // #1 prompt user for password criteria
