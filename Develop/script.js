@@ -13,6 +13,20 @@ function writePassword() {
 
 }
 
+
+// Create function to randomize to contents of an array
+function shuffle(array) {
+  var h = array.length,
+  j,
+  i;
+  while (h) {
+    i = Math.floor(Math.random() * h--);
+    j = array[h];
+    array[i] = j;
+  }
+  return array;
+}
+
   //  function to create random integar
   function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
