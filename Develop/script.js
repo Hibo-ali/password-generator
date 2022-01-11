@@ -26,6 +26,11 @@ function generatePassword() {
       "How many characters would you like your password to be? \nMinimum: 8 Digits \nMaximum: 128 Digits"
     );
 
+    if(passwordLength > 7 && passwordLength < 129) {
+  } else {
+    return "Please choose password length between 8 and 128 digits! \nPress the button to try again!";
+  }
+
     //  lowercase, uppercase, special characters
 
 
