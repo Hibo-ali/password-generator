@@ -1,10 +1,8 @@
-// Assignment code here
-
-
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
-// Write password to the #password input
+
+// Write password 
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
@@ -14,7 +12,7 @@ function writePassword() {
 }
 
 
-// Create function to randomize to contents of an array
+// Created a function that will randomize contents of an array
 function shuffle(array) {
   var h = array.length,
   j,
@@ -129,47 +127,93 @@ function shuffle(array) {
 
 // define generate password by creating a function 
 function generatePassword() {
-  var validatorCount = 0;
-  var allChosenPasswords = [];
-  var finalPassword = [];
-  console.log("Button is working")
-
-  // #1 prompt user for password criteria
-
-
-    //  password length 8 <128
-    passwordLength = prompt(
-      "How many characters would you like your password to be? \nMinimum: 8 Digits \nMaximum: 128 Digits"
-    );
-
-    if(passwordLength > 7 && passwordLength < 129) {
-  } else {
-    return "Please choose password length between 8 and 128 digits! \nPress the button to try again!";
-  }
-
+  var ChosenPasswords = [];
+  var finalGeneratedPassword = [];
+  var validator = 0;
   
+  
+  
+  // #1 prompt user for password criteria
+  //  password length 8 <128
+  passwordLength = prompt(
+    "How many characters would you like your password to be? \nMinimum: 8 Digits \nMaximum: 128 Digits"
+    );
+    
+    if(passwordLength > 7 && passwordLength < 129) {
+    } else {
+      return "Please select password length between 8 and 128 digits! \nPress the button to try again!";
+    }
+ 
 
 
-  // #2 Validate the input
-
-
-  //  #3 Generate password based on criteria
+  // Confirm if lowercase
 
   confirmLowerCase = confirm(
     "Would you like to have lowercase letters as part of your password?"
   );
   if(confirmLowerCase) {
-    allChosenPasswords = allChosenPasswords.concat(lowerCase);
+    ChosenPasswords = ChosenPasswords.concat(lowerCase);
     var random = getRandomInt(lowerCase.length);
-    finalPassword.push(lowerCase[rand]);
-    validatorCounter++;
+    finalGeneratedPassword.push(lowerCase[random]);
+    validator++;
   }
 
 
-  //  #4 Display password to the page
-    return "Generated password will go here!"
+  // confirm if uppercase
+confirmUpperCase = confirm(
+"Would you like to have uppercase letters as part of your password?"
+);
+if (confirmUpperCase) {
+  ChosenPasswords = ChosenPasswords.concat(upperCase);
+  var random = getRandomInt(upperCase.length);
+  finalGeneratedPassword.push(upperCase[random]);
+  validator++;
 }
+  
 
+  // confirm special characters 
+  confirmSpecialCharacters = confirm(
+    "Would you like to have special characters as part of your password?"
+    );
+    if (confirmSpecialCharacters ) {
+      ChosenPasswords = ChosenPasswords.concat(specialCharacters);
+      var random = getRandomInt(specialCharacters.length);
+      finalGeneratedPassword.push(specialCharacters[random]);
+      validator++;
+    }
+
+  // confirm numbers 
+  confirmNumbers = confirm(
+    "Would you like to have numbers as part of your password?"
+    );
+    if (confirmNumbers) {
+      ChosenPasswords = ChosenPasswords.concat(numbers);
+      var random = getRandomInt(numbers.length);
+      finalGeneratedPassword.push(numbers[random]);
+      validator++;
+    }
+
+    // 
+    if (
+      confirmLowerCase === false &&
+      confirmUpperCase === false &&
+      confirmSpecialCharacters === false  &&
+      confirmNumbers === false
+    ) {
+      return "Please select at least one option! \nTry again!";
+    }
+
+ // Password generation
+ for (i = 0 + validator; i < passwordLength; i++) {
+  var random = getRandomInt(ChosenPasswords.length);
+  finalGeneratedPassword.push(ChosenPasswords[random]);
+};
+
+
+shuffle(finalGeneratedPassword);
+return finalGeneratedPassword.join("");
+
+};
 
 
 // Add event listener to generate button
